@@ -5,6 +5,7 @@ import { IoMdKey } from 'react-icons/io';
 import { IoEye } from 'react-icons/io5';
 import { IoEyeOff } from 'react-icons/io5';
 import logo from '../assets/images/logo.svg';
+import { Link } from 'react-router-dom';
 function Login() {
   const [isPasswordVisible, setPasswordVisibility] = useState(false);
   const { values, handleBlur, handleChange } = useFormik({
@@ -83,9 +84,9 @@ function Login() {
         <p className="text-[12px] text-center inline mt-2 text-white opacity-80">
           Don't Have An Account?{' '}
         </p>
-        <a href="!#" className="text-[#4B72C2] text-[12px]">
+        <Link to="/signup" className="text-[#4B72C2] text-[12px]">
           Create Account
-        </a>
+        </Link>
       </form>
     </div>
   );

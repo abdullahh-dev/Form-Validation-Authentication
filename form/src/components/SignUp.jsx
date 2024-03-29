@@ -3,29 +3,24 @@ import { useFormik } from 'formik';
 import { basicSchema } from '../Schema/validations';
 import logo from '../assets/images/logo.svg';
 import { createUser } from '../apis/users';
+import { Link } from 'react-router-dom';
+import Login from './Login';
 function SignUp() {
   const onSubmit = (values, actions) => {
     createUser(values);
     actions.resetForm();
   };
-  const {
-    values,
-    errors,
-    handleBlur,
-    handleChange,
-    touched,
-    isSubmitting,
-    handleSubmit,
-  } = useFormik({
-    initialValues: {
-      fullname: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
-    validationSchema: basicSchema,
-    onSubmit,
-  });
+  const { values, errors, handleBlur, handleChange, touched, handleSubmit } =
+    useFormik({
+      initialValues: {
+        fullname: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+      },
+      validationSchema: basicSchema,
+      onSubmit,
+    });
 
   return (
     <div className="w-[360px] signup-form rounded-md px-10 py-8 max-h-max bg-[#242424]">
@@ -44,12 +39,9 @@ function SignUp() {
             Full Name
           </span>
           <input
-            autoFocus
             autoComplete="off"
-            className={`peer border-b-[1.8px] w-full py-[4px] px-[0px] border-white focus:outline-none focus:border-[#71a0fd]  opacity-80 placeholder:text-[12px] placeholder:text-[#7F7F7F] ${
-              errors.fullname && touched.fullname && 'border-red-600'
-            }`}
-            placeholder="Type Your Username"
+            className={`peer border-b-[1.8px] w-full py-[4px] px-[0px] border-white focus:outline-none focus:border-[#71a0fd]  opacity-80 placeholder:text-[12px] placeholder:text-[#7F7F7F]`}
+            placeholder="Type your fullname"
             type="text"
             name="fullname"
             value={values.fullname}
@@ -69,10 +61,8 @@ function SignUp() {
           </span>
           <input
             autoComplete="off"
-            className={`peer border-b-[1.8px] w-full py-[4px] px-[0px] border-white focus:outline-none focus:border-[#71a0fd]  placeholder:text-[12px] placeholder:text-[#7F7F7F] ${
-              errors.email && touched.email && 'border-red-600'
-            }`}
-            placeholder="Type Your Email"
+            className={`peer border-b-[1.8px] w-full py-[4px] px-[0px] border-white focus:outline-none focus:border-[#71a0fd]  placeholder:text-[12px] placeholder:text-[#7F7F7F]`}
+            placeholder="Type your email"
             type="email"
             name="email"
             value={values.email}
@@ -89,10 +79,8 @@ function SignUp() {
         <div className="relative text-white mb-4">
           <span className="opacity-80  text-[12px]">Password</span>
           <input
-            className={`peer border-b-[1.8px]  w-full py-[4px] pr-[39px] border-white   focus:outline-none focus:border-[#71a0fd] placeholder:text-[12px] placeholder:text-[#7F7F7F] ${
-              errors.password && touched.password && 'border-red-600'
-            }`}
-            placeholder="Type Your Password"
+            className={`peer border-b-[1.8px]  w-full py-[4px] pr-[39px] border-white   focus:outline-none focus:border-[#71a0fd] placeholder:text-[12px] placeholder:text-[#7F7F7F]`}
+            placeholder="Type your password"
             name="password"
             type="password"
             value={values.password}
@@ -111,7 +99,6 @@ function SignUp() {
                 'w-full bg-emerald-500'
               } `}></span>
           </span>
-
           <span
             className={`text-[8px] absolute ${
               errors.password && touched.password ? 'block' : 'hidden'
@@ -127,7 +114,7 @@ function SignUp() {
               touched.confirmPassword &&
               'border-red-600'
             } placeholder:text-[#7F7F7F]`}
-            placeholder="Re-Enter Your Password"
+            placeholder="Re-type your password"
             name="confirmPassword"
             type="password"
             value={values.confirmPassword}
@@ -143,8 +130,8 @@ function SignUp() {
             {errors.confirmPassword}
           </span>
         </div>
+
         <button
-          disabled={isSubmitting}
           type="submit"
           className="block relative py-[6px] mb-1 disabled:bg-[#83acff] text-white rounded-md hover:bg-[#324c83] bg-[#4B72C2] w-full">
           Sign up
@@ -152,9 +139,9 @@ function SignUp() {
         <p className="text-[12px] text-center inline mt-2 text-white opacity-80">
           Already Signed up?{' '}
         </p>
-        <a href="!#" className="text-[#71a0fd] text-[12px]">
+        <Link to="/login" className="text-[#71a0fd] text-[12px]">
           Login
-        </a>
+        </Link>
       </form>
     </div>
   );
