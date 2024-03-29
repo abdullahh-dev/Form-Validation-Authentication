@@ -2,9 +2,10 @@ import React from 'react';
 import { useFormik } from 'formik';
 import { basicSchema } from '../Schema/validations';
 import logo from '../assets/images/logo.svg';
+import { createUser } from '../apis/users';
 function SignUp() {
   const onSubmit = (values, actions) => {
-    console.log(values);
+    createUser(values);
     actions.resetForm();
   };
   const {
