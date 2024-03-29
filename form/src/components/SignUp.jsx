@@ -1,9 +1,10 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import { basicSchema } from '../Schema/index';
+import { basicSchema } from '../Schema/validations';
 import logo from '../assets/images/logo.svg';
 function SignUp() {
   const onSubmit = (values, actions) => {
+    console.log(values);
     actions.resetForm();
   };
   const {
@@ -87,7 +88,7 @@ function SignUp() {
         <div className="relative text-white mb-4">
           <span className="opacity-80  text-[12px]">Password</span>
           <input
-            className={`peer border-b-[1.8px] w-full py-[4px] px-[0px] border-white   focus:outline-none focus:border-[#71a0fd] placeholder:text-[12px] placeholder:text-[#7F7F7F] ${
+            className={`peer border-b-[1.8px]  w-full py-[4px] pr-[39px] border-white   focus:outline-none focus:border-[#71a0fd] placeholder:text-[12px] placeholder:text-[#7F7F7F] ${
               errors.password && touched.password && 'border-red-600'
             }`}
             placeholder="Type Your Password"
@@ -109,6 +110,7 @@ function SignUp() {
                 'w-full bg-emerald-500'
               } `}></span>
           </span>
+
           <span
             className={`text-[8px] absolute ${
               errors.password && touched.password ? 'block' : 'hidden'

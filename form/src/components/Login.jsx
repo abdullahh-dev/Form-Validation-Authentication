@@ -18,6 +18,10 @@ function Login() {
       setPasswordVisibility(!prev);
     });
   };
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log(values);
+  };
   return (
     <div className="w-[360px] login-form rounded-md px-10 py-8 max-h-max bg-[#242424]">
       <div className="flex items-center gap-1">
@@ -29,7 +33,7 @@ function Login() {
       <h1 className="text-white text-center mb-6 poppins-bold text-2xl">
         Login
       </h1>
-      <form action="Login.jsx">
+      <form onSubmit={handleLogin} action="Login.jsx">
         <div className="relative mb-4">
           <span className="peer-focus:text-[#7F7F7F] text-white opacity-80  text-[12px]">
             Email
