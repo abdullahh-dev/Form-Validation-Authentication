@@ -4,7 +4,6 @@ import { basicSchema } from '../Schema/validations';
 import logo from '../assets/images/logo.svg';
 import { createUser } from '../apis/users';
 import { Link } from 'react-router-dom';
-import Login from './Login';
 function SignUp() {
   const onSubmit = (values, actions) => {
     createUser(values);
@@ -14,6 +13,7 @@ function SignUp() {
     useFormik({
       initialValues: {
         fullname: '',
+        username: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -53,6 +53,27 @@ function SignUp() {
               errors.fullname && touched.fullname ? 'block' : 'hidden'
             } text-red-600`}>
             {errors.fullname}
+          </span>
+        </div>
+        <div className="relative text-white  mb-4">
+          <span className="peer-focus:text-[#7F7F7F] opacity-80  text-[12px]">
+            Username
+          </span>
+          <input
+            autoComplete="off"
+            className={`peer border-b-[1.8px] w-full py-[4px] px-[0px] border-white focus:outline-none focus:border-[#71a0fd]  opacity-80 placeholder:text-[12px] placeholder:text-[#7F7F7F]`}
+            placeholder="Type your username"
+            type="text"
+            name="username"
+            value={values.username}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          <span
+            className={`text-[12px] absolute ${
+              errors.username && touched.username ? 'block' : 'hidden'
+            } text-red-600`}>
+            {errors.username}
           </span>
         </div>
         <div className="relative text-white  mb-4">
